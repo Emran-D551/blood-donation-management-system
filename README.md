@@ -4,8 +4,6 @@ This is a full Blood Donation Management System with user login, donor list, blo
 
 This is a full-featured Blood Donation Management System with user login, donor list, blood requests, user login, and admin panel and developed using [HTML/CSS/JS + Firebase] 
 
-## 🌐 Live Demo (if hosted)
-https://your-project-link.web.app/
 
 ## 👨‍💻 Team Members
 - Md Abdul Motaleb Emran
