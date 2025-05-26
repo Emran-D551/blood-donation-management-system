@@ -19,7 +19,8 @@ This is a full-featured Blood Donation Management System with user login, donor 
 ## 📦 Required Tools & Packages
 No package installation is required for basic use.
 However, ensure the following:
--A modern web browser (Chrome/Edge)
--A code editor (like VS Code)
--Live Server extension in VS Code (for local preview)
--A Firebase project set up (for backend & database)
+
+- A modern web browser (Chrome/Edge)
+- A code editor (like VS Code)
+- Live Server extension in VS Code (for local preview)
+- A Firebase project set up (for backend & database)
