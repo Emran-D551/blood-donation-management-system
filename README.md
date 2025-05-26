@@ -7,7 +7,7 @@ This is a full-featured Blood Donation Management System with user login, donor 
 - Md Abdul Motaleb Emran
 - Krishna Sinha Anan
 - Samiul Islam Shihab
-- Sadia akter
+- Sadia Afrin
 
 ## 🛠️ Technology Stack
 
