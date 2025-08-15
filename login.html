@@ -1,140 +1,166 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Page</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #e53935;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+  <title>Registration Page</title>
+  <style>
+      body {
+          margin: 0;
+          padding: 0;
+          background-color: #d61010;
+          font-family: Arial, sans-serif;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
 
-        #loginForm {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            text-align: center;
-        }
+      #registrationForm {
+          background-color: #fff;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+          width: 300px;
+      }
 
-        h2 {
-            color: #e53935;
-            margin-bottom: 20px;
-        }
+      h2 {
+          text-align: center;
+          color: #e53935;
+          margin-bottom: 20px;
+      }
 
-        input[type="tel"],
-        input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+      label {
+          font-weight: bold;
+      }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #e53935;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="tel"],
+      select {
+          width: 100%;
+          padding: 8px;
+          margin-top: 5px;
+          margin-bottom: 15px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+      }
 
-        button:hover {
-            background-color: #c62828;
-        }
+      input[type="radio"] {
+          margin-right: 5px;
+      }
 
-        .register-link {
-            margin-top: 15px;
-            font-size: 14px;
-        }
+      button {
+          width: 100%;
+          padding: 10px;
+          background-color: #be1313;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-weight: bold;
+          cursor: pointer;
+      }
 
-        .register-link a {
-            color: #e53935;
-            text-decoration: none;
-            font-weight: bold;
-        }
+      button:hover {
+          background-color: #c62828;
+      }
 
-        .register-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+      .login-link {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .login-link a {
+        color: #e53935;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+  </style>
 </head>
 <body>
-    <form id="loginForm">
-        <div class="blood-logo">❤️</div>
-        <div class="title">Blood Donation Management System</div> 
-        <h2>Login</h2>
+    <form id="registrationForm">
+      <h2>User Registration</h2>
 
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" required>
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" required>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
 
-        <button type="submit">Login</button>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
 
-        <div class="register-link">
-            New user? <a href="index.html">Register here</a>
-        </div>
-        <div class="blood-drop">💉</div>
-    </div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
 
-    <!-- Admin Login Button -->
-    <button class="admin-login-btn" onclick="window.location.href='admin-login.html'">Admin Login</button>
-  </div>
-  
+      <label for="bloodGroup">Blood Group:</label>
+      <select id="bloodGroup" required>
+          <option value="">Select</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+      </select>
+
+      <label>Willing to Donate:</label><br>
+      <input type="radio" name="willing" value="Yes" required> Yes
+      <input type="radio" name="willing" value="No" required> No<br><br>
+
+      <button type="submit">Register</button>  
+
+      <div class="login-link">
+        Already a user? <a href="index.html">Login here</a>
+      </div>
     </form>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-        const firebaseConfig = {
-  apiKey: "AIzaSyCH81xSjRDP6WFNjcjj77j68rEz1erf1Fw",
-  authDomain: "blooddonationsystem-bf877.firebaseapp.com",
-  projectId: "blooddonationsystem-bf877",
-  storageBucket: "blooddonationsystem-bf877.firebasestorage.app",
-  messagingSenderId: "297033049797",
-  appId: "1:297033049797:web:89a2aaf80cc4cd908f72ac"
-};
+      const firebaseConfig = {
+        apiKey: "AIzaSyCH81xSjRDP6WFNjcjj77j68rEz1erf1Fw",
+        authDomain: "blooddonationsystem-bf877.firebaseapp.com",
+        projectId: "blooddonationsystem-bf877",
+        storageBucket: "blooddonationsystem-bf877.appspot.com",
+        messagingSenderId: "297033049797",
+        appId: "1:297033049797:web:89a2aaf80cc4cd908f72ac"
+      };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
 
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+      document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-            const phone = document.getElementById('phone').value.trim();
-            const password = document.getElementById('password').value.trim();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const bloodGroup = document.getElementById('bloodGroup').value;
+        const willing = document.querySelector('input[name="willing"]:checked').value;
 
-            let found = false;
-
-            const querySnapshot = await getDocs(collection(db, "users"));
-            querySnapshot.forEach((doc) => {
-                const user = doc.data();
-                if (user.phone === phone && user.password === password) {
-                    found = true;
-                }
-            });
-
-            if (found) {
-                alert("Login successful!");
-                window.location.href = "dashboard.html"; // Redirect to dashboard after successful login
-            } else {
-                alert("Invalid phone or password.");
-            }
-        });
+        try {
+          await addDoc(collection(db, "users"), {
+            name,
+            phone,
+            email,
+            password,
+            bloodGroup,
+            willing
+          });
+          alert("Registration successful! Please login.");
+          window.location.href = "index.html";
+        } catch (error) {
+          alert("Error: " + error.message);
+        }
+      });
     </script>
 </body>
 </html>
-
