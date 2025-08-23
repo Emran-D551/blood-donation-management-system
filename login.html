@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
   <title>Registration Page</title>
@@ -6,7 +6,7 @@
       body {
           margin: 0;
           padding: 0;
-          background-color: #d61010;
+          background-color: #d61010; /* Red background */
           font-family: Arial, sans-serif;
           height: 100vh;
           display: flex;
@@ -63,40 +63,24 @@
       button:hover {
           background-color: #c62828;
       }
-
-      .login-link {
-        text-align: center;
-        margin-top: 10px;
-      }
-
-      .login-link a {
-        color: #e53935;
-        font-weight: bold;
-        text-decoration: none;
-      }
-
-      .login-link a:hover {
-        text-decoration: underline;
-      }
   </style>
 </head>
 <body>
+    <h2>User Registration</h2>
     <form id="registrationForm">
-      <h2>User Registration</h2>
+      <label for="name">Full Name:</label><br>
+      <input type="text" id="name" required><br><br>
 
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" required>
+      <label for="phone">Phone Number:</label><br>
+      <input type="tel" id="phone" required><br><br>
 
-      <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" required>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" required><br><br>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" required><br><br>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" required>
-
-      <label for="bloodGroup">Blood Group:</label>
+      <label for="bloodGroup">Blood Group:</label><br>
       <select id="bloodGroup" required>
           <option value="">Select</option>
           <option value="A+">A+</option>
@@ -107,7 +91,7 @@
           <option value="AB-">AB-</option>
           <option value="O+">O+</option>
           <option value="O-">O-</option>
-      </select>
+      </select><br><br>
 
       <label>Willing to Donate:</label><br>
       <input type="radio" name="willing" value="Yes" required> Yes
@@ -118,49 +102,9 @@
       <div class="login-link">
         Already a user? <a href="index.html">Login here</a>
       </div>
-    </form>
+    </form> 
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyCH81xSjRDP6WFNjcjj77j68rEz1erf1Fw",
-        authDomain: "blooddonationsystem-bf877.firebaseapp.com",
-        projectId: "blooddonationsystem-bf877",
-        storageBucket: "blooddonationsystem-bf877.appspot.com",
-        messagingSenderId: "297033049797",
-        appId: "1:297033049797:web:89a2aaf80cc4cd908f72ac"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      document.getElementById('registrationForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
-        const bloodGroup = document.getElementById('bloodGroup').value;
-        const willing = document.querySelector('input[name="willing"]:checked').value;
-
-        try {
-          await addDoc(collection(db, "users"), {
-            name,
-            phone,
-            email,
-            password,
-            bloodGroup,
-            willing
-          });
-          alert("Registration successful! Please login.");
-          window.location.href = "index.html";
-        } catch (error) {
-          alert("Error: " + error.message);
-        }
-      });
-    </script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
+
